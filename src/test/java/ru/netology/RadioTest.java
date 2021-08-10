@@ -79,7 +79,7 @@ private void initFields(){
     @Test
     void shouldNextNumberRadioStationN3(){
         initFields();
-        radio.setCurrentNumberRadioStation(0);
+        radio.setCurrentNumberRadioStation(10);
         radio.nextNumberRadioStation();
 
         assertEquals(1, radio.getCurrentNumberRadioStation());
