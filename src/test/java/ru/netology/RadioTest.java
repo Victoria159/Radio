@@ -5,46 +5,56 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
-    Radio radio = new Radio(8);
-
+    Radio radio = new Radio();
+private void initFields(){
+    radio.setMaxNumberRadioStation(9);
+    radio.setMinNumberRadioStation(0);
+    radio.setMaxSoundVolume(10);
+    radio.setMinSoundVolume(0);
+}
 @Test
     void shouldNextNumberRadioStation(){
-
-    radio.setCurrentNumberRadioStation(8);
+    initFields();
+    radio.setCurrentNumberRadioStation(9);
     radio.nextNumberRadioStation();
 
     assertEquals(0, radio.getCurrentNumberRadioStation());
 }
 @Test
     void shouldPrevNumberRadioStation(){
+    initFields();
     radio.setCurrentNumberRadioStation(0);
     radio.prevNumberRadioStation();
 
-    assertEquals(8, radio.getCurrentNumberRadioStation());
+    assertEquals(9, radio.getCurrentNumberRadioStation());
 }
 @Test
     void shouldIncreaseVolume(){
-    radio.setCurrentSoundVolume(99);
+    initFields();
+    radio.setCurrentSoundVolume(9);
     radio.increaseVolume();
 
-    assertEquals(100, radio.getCurrentSoundVolume());
+    assertEquals(10, radio.getCurrentSoundVolume());
 }
 @Test
     void shouldDecreaseVolume(){
-    radio.setCurrentSoundVolume(100);
+    initFields();
+    radio.setCurrentSoundVolume(10);
     radio.decreaseVolume();
 
-    assertEquals(99, radio.getCurrentSoundVolume());
+    assertEquals(9, radio.getCurrentSoundVolume());
 }
 @Test
     void shouldIncreaseMaxVolume(){
-    radio.setCurrentSoundVolume(100);
+    initFields();
+    radio.setCurrentSoundVolume(10);
     radio.increaseVolume();
 
-    assertEquals(100, radio.getCurrentSoundVolume());
+    assertEquals(10, radio.getCurrentSoundVolume());
 }
 @Test
     void shouldDecreaseMinVolume(){
+    initFields();
     radio.setCurrentSoundVolume(0);
     radio.decreaseVolume();
 
@@ -52,6 +62,7 @@ class RadioTest {
 }
     @Test
     void shouldNextNumberRadioStationN1(){
+        initFields();
         radio.setCurrentNumberRadioStation(5);
         radio.nextNumberRadioStation();
 
@@ -59,6 +70,7 @@ class RadioTest {
     }
     @Test
     void shouldPrevNumberRadioStationN2(){
+        initFields();
         radio.setCurrentNumberRadioStation(4);
         radio.prevNumberRadioStation();
 
@@ -66,27 +78,31 @@ class RadioTest {
     }
     @Test
     void shouldNextNumberRadioStationN3(){
-        radio.setCurrentNumberRadioStation(11);
+        initFields();
+        radio.setCurrentNumberRadioStation(10);
         radio.nextNumberRadioStation();
 
         assertEquals(1, radio.getCurrentNumberRadioStation());
     }
     @Test
     void shouldPrevNumberRadioStationN4(){
+        initFields();
         radio.setCurrentNumberRadioStation(-1);
         radio.prevNumberRadioStation();
 
-        assertEquals(8, radio.getCurrentNumberRadioStation());
+        assertEquals(9, radio.getCurrentNumberRadioStation());
     }
     @Test
     void shouldIncreaseVolumeN5(){
-        radio.setCurrentSoundVolume(101);
+        initFields();
+        radio.setCurrentSoundVolume(11);
         radio.increaseVolume();
 
         assertEquals(1, radio.getCurrentSoundVolume());
     }
     @Test
     void shouldDecreaseVolumeN6(){
+        initFields();
         radio.setCurrentSoundVolume(-1);
         radio.decreaseVolume();
 
