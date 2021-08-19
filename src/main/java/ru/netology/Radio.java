@@ -2,7 +2,7 @@ package ru.netology;
 
 public class Radio {
     private int currentNumberRadioStation;
-    private int maxNumberRadioStation = 10;
+    private int numbersRadioStation = 10;
     private int minNumberRadioStation = 0;
     private int currentSoundVolume;
     private int maxSoundVolume = 100;
@@ -12,8 +12,16 @@ public class Radio {
     public Radio() {
     }
 
-    public Radio(int maxNumberRadioStation) {
-        this.maxNumberRadioStation = maxNumberRadioStation;
+    public Radio(int numbersRadioStation) {
+        this.numbersRadioStation = numbersRadioStation;
+    }
+
+    public int getNumbersRadioStation() {
+        return numbersRadioStation;
+    }
+
+    public void setNumbersRadioStation(int numbersRadioStation) {
+        this.numbersRadioStation = numbersRadioStation;
     }
 
     public int getMaxSoundVolume() {
@@ -47,7 +55,7 @@ public class Radio {
 
     public void setCurrentNumberRadioStation(int currentNumberRadioStation) {
 
-        if (currentNumberRadioStation > maxNumberRadioStation) {
+        if (currentNumberRadioStation > numbersRadioStation) {
             return;
         }
         if (currentNumberRadioStation < minNumberRadioStation) {
@@ -72,11 +80,11 @@ public class Radio {
 
     public int getMaxNumberRadioStation() {
 
-        return maxNumberRadioStation;
+        return numbersRadioStation;
     }
 
     public void setMaxNumberRadioStation(int maxNumberRadioStation) {
-        this.maxNumberRadioStation = maxNumberRadioStation;
+        this.numbersRadioStation = maxNumberRadioStation;
     }
 
     public int getMinNumberRadioStation() {
@@ -89,7 +97,7 @@ public class Radio {
     }
 
     public void nextNumberRadioStation() {
-        if (currentNumberRadioStation == maxNumberRadioStation) {
+        if (currentNumberRadioStation == numbersRadioStation) {
             this.currentNumberRadioStation = minNumberRadioStation;
         } else {
             currentNumberRadioStation++;
@@ -99,7 +107,7 @@ public class Radio {
 
     public void prevNumberRadioStation() {
         if (currentNumberRadioStation == minNumberRadioStation) {
-            this.currentNumberRadioStation = maxNumberRadioStation;
+            this.currentNumberRadioStation = numbersRadioStation;
         } else {
             currentNumberRadioStation--;
         }
