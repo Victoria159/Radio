@@ -8,21 +8,98 @@ class RadioTest {
     Radio radio = new Radio(8);
 
 @Test
-    void shouldNextNumberRadioStation(){
+public void shouldIncreaseNumberRadioStation() {
+    Radio rad = new Radio();
+    rad.setCurrentNumberRadioStation(0);
 
-    radio.setCurrentNumberRadioStation(8);
-    radio.nextNumberRadioStation();
+    rad.increaseNumberRadioStation();
 
-    assertEquals(0, radio.getCurrentNumberRadioStation());
+    assertEquals(1, rad.getCurrentNumberRadioStation());
+
 }
-@Test
-    void shouldPrevNumberRadioStation(){
-    radio.setCurrentNumberRadioStation(0);
-    radio.prevNumberRadioStation();
 
-    assertEquals(8, radio.getCurrentNumberRadioStation());
-}
-@Test
+    @Test
+    public void shouldIncreaseNumberRadioStation1() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberRadioStation(8);
+
+        rad.increaseNumberRadioStation();
+
+        assertEquals(9, rad.getCurrentNumberRadioStation());
+
+    }
+    @Test
+    public void shouldIncreaseNumberRadioStation2() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberRadioStation(10);
+
+        rad.increaseNumberRadioStation();
+
+        assertEquals(0, rad.getCurrentNumberRadioStation());
+
+    }
+    @Test
+    public void shouldIncreaseNumberRadioStation3() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberRadioStation(7);
+
+        rad.increaseNumberRadioStation();
+
+        assertEquals(8, rad.getCurrentNumberRadioStation());
+
+    }
+    @Test
+    public void shouldIncreaseNumberRadioStation4() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberRadioStation(11);
+
+        rad.increaseNumberRadioStation();
+
+        assertEquals(1, rad.getCurrentNumberRadioStation());
+
+    }
+    @Test
+    public void shouldDecreaseNumberRadioStation() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberRadioStation(9);
+
+        rad.decreaseNumberRadioStation();
+
+        assertEquals(8, rad.getCurrentNumberRadioStation());
+
+    }
+    @Test
+    public void shouldDecreaseNumberRadioStation1() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberRadioStation(1);
+
+        rad.decreaseNumberRadioStation();
+
+        assertEquals(0, rad.getCurrentNumberRadioStation());
+
+    }
+
+    @Test
+    public void shouldDecreaseNumberRadioStation2() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberRadioStation(0);
+
+        rad.decreaseNumberRadioStation();
+
+        assertEquals(10, rad.getCurrentNumberRadioStation());
+
+    }
+    @Test
+    public void shouldDecreaseNumberRadioStation3() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberRadioStation(-1);
+
+        rad.decreaseNumberRadioStation();
+
+        assertEquals(10, rad.getCurrentNumberRadioStation());
+
+    }
+    @Test
     void shouldIncreaseVolume(){
     radio.setCurrentSoundVolume(99);
     radio.increaseVolume();
@@ -50,34 +127,6 @@ class RadioTest {
 
     assertEquals(0, radio.getCurrentSoundVolume());
 }
-    @Test
-    void shouldNextNumberRadioStationN1(){
-        radio.setCurrentNumberRadioStation(5);
-        radio.nextNumberRadioStation();
-
-        assertEquals(6, radio.getCurrentNumberRadioStation());
-    }
-    @Test
-    void shouldPrevNumberRadioStationN2(){
-        radio.setCurrentNumberRadioStation(4);
-        radio.prevNumberRadioStation();
-
-        assertEquals(3, radio.getCurrentNumberRadioStation());
-    }
-    @Test
-    void shouldNextNumberRadioStationN3(){
-        radio.setCurrentNumberRadioStation(11);
-        radio.nextNumberRadioStation();
-
-        assertEquals(1, radio.getCurrentNumberRadioStation());
-    }
-    @Test
-    void shouldPrevNumberRadioStationN4(){
-        radio.setCurrentNumberRadioStation(-1);
-        radio.prevNumberRadioStation();
-
-        assertEquals(8, radio.getCurrentNumberRadioStation());
-    }
     @Test
     void shouldIncreaseVolumeN5(){
         radio.setCurrentSoundVolume(101);

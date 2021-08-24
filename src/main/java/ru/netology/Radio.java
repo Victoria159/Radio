@@ -78,34 +78,15 @@ public class Radio {
         this.currentSoundVolume = currentSoundVolume;
     }
 
-    public int getMaxNumberRadioStation() {
 
-        return numbersRadioStation;
-    }
-
-    public void setMaxNumberRadioStation(int maxNumberRadioStation) {
-        this.numbersRadioStation = maxNumberRadioStation;
-    }
-
-    public int getMinNumberRadioStation() {
-
-        return minNumberRadioStation;
-    }
-
-    public void setMinNumberRadioStation(int minNumberRadioStation) {
-        this.minNumberRadioStation = minNumberRadioStation;
-    }
-
-    public void nextNumberRadioStation() {
+    public void increaseNumberRadioStation() {
         if (currentNumberRadioStation == numbersRadioStation) {
             this.currentNumberRadioStation = minNumberRadioStation;
         } else {
             currentNumberRadioStation++;
         }
     }
-
-
-    public void prevNumberRadioStation() {
+    public void decreaseNumberRadioStation() {
         if (currentNumberRadioStation == minNumberRadioStation) {
             this.currentNumberRadioStation = numbersRadioStation;
         } else {
