@@ -5,100 +5,87 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
-    Radio radio = new Radio(8);
+    Radio radio1 = new Radio();
+    Radio radio = new Radio(20);
+
+    @Test
+    public void shouldIncreaseRadioStation() {
+        radio.setCurrentNumberRadioStation(radio.getMaxNumberRadioStation() - 1);
+
+        radio.increaseRadioStation();
+
+        int expected = radio.getMaxNumberRadioStation();
+        int actual = radio.getCurrentNumberRadioStation();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldDecreaseRadioStation() {
+        radio.setCurrentNumberRadioStation(radio.getMinNumberRadioStation() + 1);
+
+        radio.decreaseRadioStation();
+
+        int expected = radio.getMinNumberRadioStation();
+        int actual = radio.getCurrentNumberRadioStation();
+
+        assertEquals(expected, actual);
+    }
 
 @Test
-public void shouldIncreaseNumberRadioStation() {
-    Radio rad = new Radio();
-    rad.setCurrentNumberRadioStation(0);
+public void shouldIncreaseRadioStation1() {
+    Radio radio = new Radio();
+    radio.setCurrentNumberRadioStation(1);
 
-    rad.increaseNumberRadioStation();
+    radio.increaseRadioStation();
 
-    assertEquals(1, rad.getCurrentNumberRadioStation());
+    assertEquals(2, radio.getCurrentNumberRadioStation());
 
 }
 
     @Test
-    public void shouldIncreaseNumberRadioStation1() {
+    public void shouldIncreaseRadioStation2() {
         Radio rad = new Radio();
-        rad.setCurrentNumberRadioStation(8);
+        rad.setCurrentNumberRadioStation(20);
 
-        rad.increaseNumberRadioStation();
-
-        assertEquals(9, rad.getCurrentNumberRadioStation());
-
-    }
-    @Test
-    public void shouldIncreaseNumberRadioStation2() {
-        Radio rad = new Radio();
-        rad.setCurrentNumberRadioStation(10);
-
-        rad.increaseNumberRadioStation();
+        rad.increaseRadioStation();
 
         assertEquals(0, rad.getCurrentNumberRadioStation());
 
     }
+
     @Test
-    public void shouldIncreaseNumberRadioStation3() {
-        Radio rad = new Radio();
-        rad.setCurrentNumberRadioStation(7);
-
-        rad.increaseNumberRadioStation();
-
-        assertEquals(8, rad.getCurrentNumberRadioStation());
-
-    }
-    @Test
-    public void shouldIncreaseNumberRadioStation4() {
+    public void shouldIncreaseRadioStation5() {
         Radio rad = new Radio();
         rad.setCurrentNumberRadioStation(11);
 
-        rad.increaseNumberRadioStation();
+        rad.increaseRadioStation();
 
-        assertEquals(1, rad.getCurrentNumberRadioStation());
+        assertEquals(12, rad.getCurrentNumberRadioStation());
 
     }
     @Test
-    public void shouldDecreaseNumberRadioStation() {
+    public void shouldDecreaseRadioStation1() {
         Radio rad = new Radio();
         rad.setCurrentNumberRadioStation(9);
 
-        rad.decreaseNumberRadioStation();
+        rad.decreaseRadioStation();
 
         assertEquals(8, rad.getCurrentNumberRadioStation());
 
     }
-    @Test
-    public void shouldDecreaseNumberRadioStation1() {
-        Radio rad = new Radio();
-        rad.setCurrentNumberRadioStation(1);
-
-        rad.decreaseNumberRadioStation();
-
-        assertEquals(0, rad.getCurrentNumberRadioStation());
-
-    }
 
     @Test
-    public void shouldDecreaseNumberRadioStation2() {
+    public void shouldDecreaseRadioStation3() {
         Radio rad = new Radio();
         rad.setCurrentNumberRadioStation(0);
 
-        rad.decreaseNumberRadioStation();
+        rad.decreaseRadioStation();
 
-        assertEquals(10, rad.getCurrentNumberRadioStation());
-
-    }
-    @Test
-    public void shouldDecreaseNumberRadioStation3() {
-        Radio rad = new Radio();
-        rad.setCurrentNumberRadioStation(-1);
-
-        rad.decreaseNumberRadioStation();
-
-        assertEquals(10, rad.getCurrentNumberRadioStation());
+        assertEquals(20, rad.getCurrentNumberRadioStation());
 
     }
+
     @Test
     void shouldIncreaseVolume(){
     radio.setCurrentSoundVolume(99);
