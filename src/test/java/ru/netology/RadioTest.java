@@ -4,106 +4,250 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RadioTest {
-    private Radio radio = new Radio();
-    private Radio radio1 = new Radio(20);
-    private Radio radio2 = new Radio(15);
-    private Radio radio3 = new Radio(2);
+public class RadioTest {
 
     @Test
-    public void shouldIncreaseRadioStation() {
-        radio1.setCurrentNumberRadioStation(radio1.getMaxNumberRadioStation() - 1);
+    public void shouldIncreaseNumberRadioStation1() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberRadioStation(0);
 
-        radio1.increaseRadioStation();
+        rad.increaseNumberRadioStation();
 
-        int expected = radio1.getMaxNumberRadioStation();
-        int actual = radio1.getCurrentNumberRadioStation();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldDecreaseRadioStation() {
-        radio3.setCurrentNumberRadioStation(radio3.getMinNumberRadioStation() + 1);
-
-        radio3.decreaseRadioStation();
-
-        int expected = radio3.getMinNumberRadioStation();
-        int actual = radio3.getCurrentNumberRadioStation();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldIncreaseRadioStation1() {
-        radio2.setCurrentNumberRadioStation(radio2.getMaxNumberRadioStation());
-
-        radio2.increaseRadioStation();
-
-        int expected = radio2.getMinNumberRadioStation();
-        int actual = radio2.getCurrentNumberRadioStation();
-
-        assertEquals(expected, actual);
+        assertEquals(1, rad.getCurrentNumberRadioStation());
 
     }
 
     @Test
-    public void shoulddecreaseRadioStation2() {
-        radio.setCurrentNumberRadioStation(radio.getMinNumberRadioStation());
+    public void shouldIncreaseNumberRadioStation2() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberRadioStation(8);
 
-        radio.decreaseRadioStation();
+        rad.increaseNumberRadioStation();
 
-        int expected = radio.getMaxNumberRadioStation();
-        int actual = radio.getCurrentNumberRadioStation();
+        assertEquals(9, rad.getCurrentNumberRadioStation());
 
-        assertEquals(expected, actual);
     }
 
     @Test
-    void shouldIncreaseVolume() {
-        radio.setCurrentSoundVolume(99);
-        radio.increaseVolume();
+    public void shouldIncreaseNumberRadioStation3() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberRadioStation(9);
 
-        assertEquals(100, radio.getCurrentSoundVolume());
+        rad.increaseNumberRadioStation();
+
+        assertEquals(0, rad.getCurrentNumberRadioStation());
+
     }
 
     @Test
-    void shouldDecreaseVolume() {
-        radio.setCurrentSoundVolume(100);
-        radio.decreaseVolume();
+    public void shouldDecreaseNumberRadioStation1() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberRadioStation(9);
 
-        assertEquals(99, radio.getCurrentSoundVolume());
+        rad.decreaseNumberRadioStation();
+
+        assertEquals(8, rad.getCurrentNumberRadioStation());
+
     }
 
     @Test
-    void shouldIncreaseMaxVolume() {
-        radio.setCurrentSoundVolume(100);
-        radio.increaseVolume();
+    public void shouldDecreaseNumberRadioStation2() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberRadioStation(1);
 
-        assertEquals(100, radio.getCurrentSoundVolume());
+        rad.decreaseNumberRadioStation();
+
+        assertEquals(0, rad.getCurrentNumberRadioStation());
+
     }
 
     @Test
-    void shouldDecreaseMinVolume() {
-        radio.setCurrentSoundVolume(0);
-        radio.decreaseVolume();
+    public void shouldDecreaseNumberRadioStation3() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberRadioStation(0);
 
-        assertEquals(0, radio.getCurrentSoundVolume());
+        rad.decreaseNumberRadioStation();
+
+        assertEquals(10, rad.getCurrentNumberRadioStation());
+
     }
 
     @Test
-    void shouldIncreaseVolumeN5() {
-        radio.setCurrentSoundVolume(101);
-        radio.increaseVolume();
+    public void shouldIncreaseNumberVolume1() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberVolume(0);
 
-        assertEquals(1, radio.getCurrentSoundVolume());
+        rad.increaseNumberVolume();
+
+        assertEquals(1, rad.getCurrentNumberVolume());
+
     }
 
     @Test
-    void shouldDecreaseVolumeN6() {
-        radio.setCurrentSoundVolume(-1);
-        radio.decreaseVolume();
+    public void shouldIncreaseNumberVolume2() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberVolume(99);
 
-        assertEquals(0, radio.getCurrentSoundVolume());
+        rad.increaseNumberVolume();
+
+        assertEquals(100, rad.getCurrentNumberVolume());
+
     }
+
+    @Test
+    public void shouldIncreaseNumberVolume3() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberVolume(100);
+
+        rad.increaseNumberVolume();
+
+        assertEquals(100, rad.getCurrentNumberVolume());
+
+    }
+
+
+    @Test
+    public void shouldDecreaseNumberVolume1() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberVolume(100);
+
+        rad.decreaseVolume();
+
+        assertEquals(99, rad.getCurrentNumberVolume());
+
+    }
+
+    @Test
+    public void shouldDecreaseNumberVolume2() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberVolume(50);
+
+        rad.decreaseVolume();
+
+        assertEquals(49, rad.getCurrentNumberVolume());
+
+    }
+
+    @Test
+    public void shouldDecreaseNumberVolume3() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberVolume(0);
+
+        rad.decreaseVolume();
+
+        assertEquals(0, rad.getCurrentNumberVolume());
+
+    }
+
+    @Test
+    public void shouldMaxNumberRadioStation() {
+        Radio rad = new Radio(10);
+        rad.setCurrentNumberRadioStation(9);
+
+        rad.getNumbersRadioStation();
+
+        assertEquals(9, rad.getCurrentNumberRadioStation());
+
+    }
+
+    @Test
+    public void shouldMinNumberRadioStation() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberRadioStation(0);
+
+        rad.getMinNumberRadioStation();
+
+        assertEquals(0, rad.getCurrentNumberRadioStation());
+
+    }
+
+    @Test
+    public void shouldNumberRadioStationLessMin() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberRadioStation(-1);
+
+        rad.decreaseNumberRadioStation();
+
+        assertEquals(10, rad.getCurrentNumberRadioStation());
+
+    }
+
+    @Test
+    public void shouldNumberRadioStationOverMax() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberRadioStation(11);
+
+        rad.setCurrentNumberRadioStation(11);
+
+        assertEquals(0, rad.getCurrentNumberRadioStation());
+
+    }
+
+    @Test
+    public void shouldNumberRadioStationOverMax2() {
+        Radio rad = new Radio(10);
+        rad.setCurrentNumberRadioStation(10);
+
+        rad.setCurrentNumberRadioStation(10);
+
+        assertEquals(0, rad.getCurrentNumberRadioStation());
+
+    }
+
+    @Test
+    public void shouldCurrentNumberVolumeLessMin() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberVolume(-1);
+
+        rad.setCurrentNumberVolume(-1);
+
+        assertEquals(0, rad.getCurrentNumberVolume());
+
+    }
+
+    @Test
+    public void shouldCurrentNumberVolumeOverMax() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberVolume(101);
+
+        rad.setCurrentNumberVolume(101);
+
+        assertEquals(0, rad.getCurrentNumberVolume());
+
+    }
+
+    @Test
+    public void shouldCurrentNumberVolumeMax() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberVolume(100);
+
+        rad.getMaxNumberVolume();
+
+        assertEquals(100, rad.getCurrentNumberVolume());
+
+    }
+
+    @Test
+    public void shouldCurrentNumberVolumeMin() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberVolume(0);
+
+        rad.getMinNumberVolume();
+
+        assertEquals(0, rad.getCurrentNumberVolume());
+
+    }
+
+    @Test
+    public void shouldNumbersRadioStation() {
+        Radio rad = new Radio();
+        rad.setCurrentNumberRadioStation(5);
+
+        rad.getNumbersRadioStation();
+
+        assertEquals(10, rad.getNumbersRadioStation());
+
+    }
+
+
 }
