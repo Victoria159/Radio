@@ -249,5 +249,12 @@ public class RadioTest {
 
     }
 
+    @Test
+    public void shouldNumbersRadioStation2(){
+        Radio rad = new Radio(20);
+        rad.setCurrentNumberRadioStation(20);
 
+
+        assertEquals(0, rad.getCurrentNumberRadioStation() );
+    }
 }
